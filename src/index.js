@@ -6,7 +6,17 @@ var cdr=require('./model/cdrcheck')
 var schedule = require('node-schedule');
 var check_sunat = require('./model/connection');
  
-var j = schedule.scheduleJob('10 * * * * *', function(){
+
+let startTime = new Date(Date.now() + 5000);
+let endTime = new Date(startTime.getTime() + 5000);
+
+var rule = new schedule.RecurrenceRule();
+rule.dayOfWeek = [new schedule.Range(0, 6)];
+rule.hour = [new schedule.Range(16, 17)];
+rule.minute = [new schedule.Range(0, 59)];
+
+//var j = schedule.scheduleJob({ start:{hour: 16, minute: 51, dayOfWeek: 3}, end: {hour: 16, minute: 53, dayOfWeek: 3}, rule: '*/1 * * * *' }, function(){
+var j = schedule.scheduleJob(rule , function(){
    
   var currentdate = new Date(); 
   var datetime = "Hora : " + currentdate.getDate() + "/"
