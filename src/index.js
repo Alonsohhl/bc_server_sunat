@@ -6,7 +6,6 @@ var cdr=require('./model/cdrcheck')
 var schedule = require('node-schedule');
 var check_sunat = require('./model/connection');
  
-<<<<<<< HEAD
 
 let startTime = new Date(Date.now() + 5000);
 let endTime = new Date(startTime.getTime() + 5000);
@@ -18,9 +17,6 @@ rule.minute = [new schedule.Range(0, 59)];
 
 //var j = schedule.scheduleJob({ start:{hour: 16, minute: 51, dayOfWeek: 3}, end: {hour: 16, minute: 53, dayOfWeek: 3}, rule: '*/1 * * * *' }, function(){
 var j = schedule.scheduleJob(rule , function(){
-=======
-var j = schedule.scheduleJob('10 * * * * *', function(){
->>>>>>> 589ec2ed44464f3219b69fc231194db7daced015
    
   var currentdate = new Date(); 
   var datetime = "Hora : " + currentdate.getDate() + "/"
@@ -55,8 +51,6 @@ app.get('/sunat',function(req,res,next){
 });
 
 app.get('/checkdoc/:fac_ruc/:fac_tip/:fac_ser/:fac_nro', function (req, res,next) {
-
-  
 
   var json_doc =  { "fac_ruc":req.params.fac_ruc,
                     "fac_tip":req.params.fac_tip,
